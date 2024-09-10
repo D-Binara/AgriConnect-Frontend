@@ -1,7 +1,3 @@
-Here's a description for your GitHub project:
-
----
-
 ## Project: AgriConnect - Reducing Food Wastage and Enhancing Agricultural Efficiency
 
 ### Overview
