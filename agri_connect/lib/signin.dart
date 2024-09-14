@@ -9,6 +9,13 @@ class SignIn extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          // Add background image
+          Positioned.fill(
+            child: Image.asset(
+              'assets/s3.png',
+              fit: BoxFit.cover, // Make the image cover the entire screen
+            ),
+          ),
           Positioned(
             top: 40,
             left: 20,
@@ -30,27 +37,36 @@ class SignIn extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 110),
+                  const SizedBox(height: 150),
                   const Text(
-                    'Sign in now',
-                    style: TextStyle(fontSize: 25),
+                    'SignIn Now',
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Colors
+                            .white), // Set text color to contrast background
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    'Please sign in to continue our app',
-                    style: TextStyle(color: Color.fromARGB(255, 116, 116, 115)),
+                    'Please Signin to continue using our app',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 200, 200,
+                          200), // Lighter color for better contrast
+                    ),
                   ),
                   const SizedBox(height: 20),
                   const TextField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon:
+                          Icon(Icons.lock, color: Colors.white), // Icon color
                       hintText: 'Username',
-                      hintStyle: TextStyle(color: Color.fromARGB(112, 0, 0, 0)),
+                      hintStyle: TextStyle(
+                          color: Color.fromARGB(
+                              180, 255, 255, 255)), // Hint color for visibility
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
-                          color: Colors.blue, // Border color
-                          width: 2.0, // Border width
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          width: 2.0,
                         ),
                       ),
                     ),
@@ -59,9 +75,11 @@ class SignIn extends StatelessWidget {
                   const TextField(
                     obscureText: true,
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon:
+                          Icon(Icons.lock, color: Colors.white), // Icon color
                       hintText: 'Password',
-                      hintStyle: TextStyle(color: Color.fromARGB(112, 0, 0, 0)),
+                      hintStyle:
+                          TextStyle(color: Color.fromARGB(180, 255, 255, 255)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -75,13 +93,13 @@ class SignIn extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: const Text(
-                      'Forgot Password',
+                      'Forgot Password?',
                       style: TextStyle(
-                        color: Color.fromARGB(255, 33, 54, 243),
+                        color: Color.fromARGB(255, 111, 173, 254),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20), // Added missing SizedBox
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () {
                       // Add your sign-in logic here
@@ -110,11 +128,14 @@ class SignIn extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20), // Added spacing
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Don’t have an account?'),
+                      const Text(
+                        'Don’t have an account?',
+                        style: TextStyle(color: Colors.white), // Text color
+                      ),
                       const SizedBox(width: 5),
                       GestureDetector(
                         onTap: () {
@@ -123,7 +144,7 @@ class SignIn extends StatelessWidget {
                         child: const Text(
                           'Signup',
                           style: TextStyle(
-                            color: Color.fromARGB(255, 33, 54, 243),
+                            color: Color.fromARGB(255, 111, 173, 254),
                           ),
                         ),
                       ),
