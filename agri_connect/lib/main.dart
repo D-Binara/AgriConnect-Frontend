@@ -25,9 +25,8 @@ class MyHomePage extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // Use a container with a green color instead of an image
           Container(
-            color: Colors.green, // Full green background
+            color: Colors.green, 
           ),
           GestureDetector(
             onTap: () {
