@@ -9,6 +9,12 @@ class SignUp extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          Positioned.fill(
+            child: Image.asset(
+              'assets/signup.png',
+              fit: BoxFit.cover, // Make the image cover the entire screen
+            ),
+          ),
           Positioned(
               top: 40,
               left: 20,
@@ -32,19 +38,22 @@ class SignUp extends StatelessWidget {
                   const SizedBox(height: 110),
                   const Text(
                     'Sign up now',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(
+                        fontSize: 25,
+                        color: Color.fromARGB(255, 255, 255, 255)),
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    'Please fill the details and create account',
-                    style: TextStyle(color: Color.fromARGB(255, 116, 116, 115)),
+                    'Please fill the details and create an account',
+                    style: TextStyle(color: Color.fromARGB(255, 186, 186, 186)),
                   ),
                   const SizedBox(height: 20),
                   const TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.person),
                       hintText: 'Username',
-                      hintStyle: TextStyle(color: Color.fromARGB(112, 0, 0, 0)),
+                      hintStyle:
+                          TextStyle(color: Color.fromARGB(255, 241, 239, 239)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -59,7 +68,8 @@ class SignUp extends StatelessWidget {
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email),
                       hintText: 'E-mail',
-                      hintStyle: TextStyle(color: Color.fromARGB(112, 0, 0, 0)),
+                      hintStyle:
+                          TextStyle(color: Color.fromARGB(255, 249, 249, 249)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -75,7 +85,8 @@ class SignUp extends StatelessWidget {
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
                       hintText: 'Password',
-                      hintStyle: TextStyle(color: Color.fromARGB(112, 0, 0, 0)),
+                      hintStyle:
+                          TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -91,7 +102,7 @@ class SignUp extends StatelessWidget {
                     child: Text(
                       'Password must contain atleast 8 characters.',
                       style:
-                          TextStyle(color: Color.fromARGB(255, 116, 116, 115)),
+                          TextStyle(color: Color.fromARGB(255, 195, 195, 195)),
                     ),
                   ),
                   const SizedBox(height: 40),
@@ -132,7 +143,10 @@ class SignUp extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Already have an account?'),
+                      const Text('Already have an account?',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 243, 243, 243),
+                          )),
                       const SizedBox(width: 5),
                       GestureDetector(
                         onTap: () {
@@ -146,7 +160,7 @@ class SignUp extends StatelessWidget {
                         child: const Text(
                           'SignIn',
                           style: TextStyle(
-                            color: Color.fromARGB(255, 33, 54, 243),
+                            color: Color.fromARGB(255, 33, 156, 243),
                           ),
                         ),
                       ),
