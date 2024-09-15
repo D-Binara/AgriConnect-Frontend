@@ -1,3 +1,4 @@
+import 'package:agri_connect/siunup.dart';
 import 'package:flutter/material.dart';
 import 'package:agri_connect/main.dart';
 
@@ -139,9 +140,14 @@ class SignIn extends StatelessWidget {
                       const SizedBox(width: 5),
                       GestureDetector(
                         onTap: () {
-                          // Add your signup logic here
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignUp(),
+                            ),
+                          );
                         },
-                        child: const Text(
+                        child: Text(
                           'Signup',
                           style: TextStyle(
                             color: Color.fromARGB(255, 111, 173, 254),
