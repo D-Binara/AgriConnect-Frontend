@@ -13,7 +13,7 @@ class SignIn extends StatelessWidget {
           // Add background image
           Positioned.fill(
             child: Image.asset(
-              'assets/s3.png',
+              'assets/signin.png',
               fit: BoxFit.cover, // Make the image cover the entire screen
             ),
           ),
