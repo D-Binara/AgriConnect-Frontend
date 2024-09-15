@@ -1,4 +1,4 @@
-import 'package:agri_connect/siunup.dart';
+import 'package:agri_connect/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:agri_connect/main.dart';
 
