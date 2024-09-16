@@ -39,15 +39,17 @@ class Second extends StatelessWidget {
                 children: [
                   const SizedBox(height: 150),
                   const Text(
-                    'Welcome to AgriConnect!',
+                    'Join with us to continue your agricultural journey',
                     style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center, // Centered for a title effect
                   ),
                   const SizedBox(height: 40),
                   const Text(
-                    'AgriConnect is an innovative platform designed to address the pressing issues of food wastage and high food prices in Sri Lanka. Each year, approximately 500,000 MT of fruits and vegetables go to waste due to excessive production and market inefficiencies. In addition, food inflation reached 95% in 2022, making it challenging for consumers to afford fresh produce.',
+                    'AgriConnect empowers farmers with tools like soil analysis, crop recommendations, and AI-based disease identification, helping them optimize production and sell directly to consumers. For the public, it offers affordable fresh produce and plant disease solutions. The platform aims to reduce food waste, boost farmer incomes, and provide access to fresh, affordable food.',
                     style: TextStyle(
                       color: Color.fromARGB(255, 200, 200, 200),
                     ),
@@ -55,38 +57,79 @@ class Second extends StatelessWidget {
                         TextAlign.justify, // Proper alignment for paragraphs
                   ),
                   const SizedBox(height: 50),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const MainApp(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 80),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 33, 54, 243),
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black26,
-                            offset: Offset(0, 2),
-                            blurRadius: 6,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .center, // Centers the buttons in the row
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MainApp(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 50), // Adjust padding
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 33, 54, 243),
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black26,
+                                offset: Offset(0, 2),
+                                blurRadius: 6,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: const Text(
-                        'Explore',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          child: const Text(
+                            'Sign In',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      const SizedBox(
+                          width: 20), // Adds space between the buttons
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MainApp(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 50), // Adjust padding
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black26,
+                                offset: Offset(0, 2),
+                                blurRadius: 6,
+                              ),
+                            ],
+                          ),
+                          child: const Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
