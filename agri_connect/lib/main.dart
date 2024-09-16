@@ -1,4 +1,4 @@
-import 'package:agri_connect/signin.dart';
+import 'package:agri_connect/firstpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SignIn(),
+                  builder: (context) => const First(),
                 ),
               );
               print("AgriConnect text tapped!");
