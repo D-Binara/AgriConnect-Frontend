@@ -1,10 +1,8 @@
-import 'package:agri_connect/second.dart';
-import 'package:agri_connect/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:agri_connect/main.dart';
 
-class First extends StatelessWidget {
-  const First({Key? key}) : super(key: key);
+class Second extends StatelessWidget {
+  const Second({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +12,7 @@ class First extends StatelessWidget {
           // Add background image
           Positioned.fill(
             child: Image.asset(
-              'assets/first.png',
+              'assets/second.png',
               fit: BoxFit.cover, // Make the image cover the entire screen
             ),
           ),
@@ -62,7 +60,7 @@ class First extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Second(),
+                          builder: (context) => const MainApp(),
                         ),
                       );
                     },
