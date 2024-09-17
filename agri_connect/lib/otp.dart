@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:agri_connect/newpassword.dart';
 import 'package:flutter/material.dart';
 import 'package:agri_connect/forgotpassword.dart';
-import 'package:agri_connect/firstpage.dart';
 
 class OTP extends StatefulWidget {
   const OTP({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class _OTPScreenState extends State<OTP> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const First(),
+        builder: (context) => const NewPw(),
       ),
     );
   }
