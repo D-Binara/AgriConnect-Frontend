@@ -1,6 +1,7 @@
+import 'package:agri_connect/forgotpassword.dart';
+import 'package:agri_connect/second.dart';
 import 'package:agri_connect/signup.dart';
 import 'package:flutter/material.dart';
-import 'package:agri_connect/main.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class SignIn extends StatelessWidget {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MainApp(),
+                    builder: (context) => const Second(),
                   ),
                 );
               },
@@ -40,15 +41,16 @@ class SignIn extends StatelessWidget {
                 children: [
                   const SizedBox(height: 150),
                   const Text(
-                    'SignIn Now',
+                    'Sign In Now',
                     style: TextStyle(
-                        fontSize: 25,
-                        color: Colors
-                            .white), // Set text color to contrast background
+                      fontSize: 25,
+                      color:
+                          Colors.white, // Set text color to contrast background
+                    ),
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    'Please Signin to continue using our app',
+                    'Please sign in to continue using our app',
                     style: TextStyle(
                       color: Color.fromARGB(255, 200, 200,
                           200), // Lighter color for better contrast
@@ -61,8 +63,9 @@ class SignIn extends StatelessWidget {
                           Icon(Icons.lock, color: Colors.white), // Icon color
                       hintText: 'Username',
                       hintStyle: TextStyle(
-                          color: Color.fromARGB(
-                              180, 255, 255, 255)), // Hint color for visibility
+                        color: Color.fromARGB(
+                            180, 255, 255, 255), // Hint color for visibility
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -93,17 +96,32 @@ class SignIn extends StatelessWidget {
                   const SizedBox(height: 20),
                   Align(
                     alignment: Alignment.centerRight,
-                    child: const Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 111, 173, 254),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Forgot(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 111, 173, 254),
+                        ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () {
-                      // Add your sign-in logic here
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Second(),
+                        ),
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -147,8 +165,8 @@ class SignIn extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Text(
-                          'Signup',
+                        child: const Text(
+                          'Sign Up',
                           style: TextStyle(
                             color: Color.fromARGB(255, 111, 173, 254),
                           ),

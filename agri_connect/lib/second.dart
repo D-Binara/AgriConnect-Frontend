@@ -1,5 +1,7 @@
+import 'package:agri_connect/firstpage.dart';
+import 'package:agri_connect/signin.dart';
+import 'package:agri_connect/signup.dart';
 import 'package:flutter/material.dart';
-import 'package:agri_connect/main.dart';
 
 class Second extends StatelessWidget {
   const Second({Key? key}) : super(key: key);
@@ -24,7 +26,7 @@ class Second extends StatelessWidget {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MainApp(),
+                    builder: (context) => const First(),
                   ),
                 );
               },
@@ -66,7 +68,7 @@ class Second extends StatelessWidget {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const MainApp(),
+                              builder: (context) => const SignIn(),
                             ),
                           );
                         },
@@ -101,7 +103,7 @@ class Second extends StatelessWidget {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const MainApp(),
+                              builder: (context) => const SignUp(),
                             ),
                           );
                         },
