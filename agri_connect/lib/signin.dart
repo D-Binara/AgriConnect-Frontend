@@ -60,7 +60,7 @@ class SignIn extends StatelessWidget {
                   const TextField(
                     decoration: InputDecoration(
                       prefixIcon:
-                          Icon(Icons.lock, color: Colors.white), // Icon color
+                          Icon(Icons.person, color: Colors.white), // Icon color
                       hintText: 'Username',
                       hintStyle: TextStyle(
                         color: Color.fromARGB(
