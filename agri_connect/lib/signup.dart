@@ -1,3 +1,4 @@
+import 'package:agri_connect/second.dart';
 import 'package:flutter/material.dart';
 import 'package:agri_connect/signin.dart';
 
@@ -23,7 +24,7 @@ class SignUp extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SignIn(),
+                      builder: (context) => const Second(),
                     ),
                   );
                 },
@@ -81,6 +82,22 @@ class SignUp extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   const TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person),
+                      hintText: 'Reagion',
+                      hintStyle:
+                          TextStyle(color: Color.fromARGB(255, 241, 239, 239)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderSide: BorderSide(
+                          color: Colors.blue, // Border color
+                          width: 2.0, // Border width
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const TextField(
                     obscureText: true,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
@@ -92,6 +109,22 @@ class SignUp extends StatelessWidget {
                         borderSide: BorderSide(
                           color: Color.fromARGB(255, 1, 134, 244),
                           width: 2.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person),
+                      hintText: 'Confirm Password',
+                      hintStyle:
+                          TextStyle(color: Color.fromARGB(255, 241, 239, 239)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderSide: BorderSide(
+                          color: Colors.blue, // Border color
+                          width: 2.0, // Border width
                         ),
                       ),
                     ),
