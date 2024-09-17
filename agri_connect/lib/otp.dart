@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:agri_connect/newpassword.dart';
 import 'package:flutter/material.dart';
 import 'package:agri_connect/forgotpassword.dart';
-import 'package:agri_connect/firstpage.dart';
 
 class OTP extends StatefulWidget {
   const OTP({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class _OTPScreenState extends State<OTP> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const First(),
+        builder: (context) => const NewPw(),
       ),
     );
   }
@@ -151,7 +151,29 @@ class _OTPScreenState extends State<OTP> {
                     onTap: () {
                       _onOtpEntered();
                     },
-                    child: Image.asset('assets/verify.png'),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 80),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 33, 54, 243),
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black26,
+                            offset: Offset(0, 2),
+                            blurRadius: 6,
+                          ),
+                        ],
+                      ),
+                      child: const Text(
+                        'Verify',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   Text(
