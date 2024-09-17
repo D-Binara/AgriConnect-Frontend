@@ -13,6 +13,8 @@ class _NewPwState extends State<NewPw> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+  bool _isPasswordVisible = false; // To toggle password visibility
+  bool _isConfirmPasswordVisible = false; // For confirm password visibility
 
   @override
   Widget build(BuildContext context) {
@@ -55,20 +57,33 @@ class _NewPwState extends State<NewPw> {
                     const SizedBox(height: 20),
                     TextFormField(
                       controller: _passwordController,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.lock),
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.lock),
                         hintText: 'Password',
-                        hintStyle:
-                            TextStyle(color: Color.fromARGB(112, 0, 0, 0)),
-                        border: OutlineInputBorder(
+                        hintStyle: const TextStyle(
+                            color: Color.fromARGB(112, 0, 0, 0)),
+                        border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           borderSide: BorderSide(
                             color: Colors.blue,
                             width: 2.0,
                           ),
                         ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        ),
                       ),
-                      obscureText: true, // To hide password
+                      obscureText:
+                          !_isPasswordVisible, // Toggle based on visibility
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your password';
@@ -79,20 +94,34 @@ class _NewPwState extends State<NewPw> {
                     const SizedBox(height: 20),
                     TextFormField(
                       controller: _confirmPasswordController,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.lock),
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.lock),
                         hintText: 'Confirm Password',
-                        hintStyle:
-                            TextStyle(color: Color.fromARGB(112, 0, 0, 0)),
-                        border: OutlineInputBorder(
+                        hintStyle: const TextStyle(
+                            color: Color.fromARGB(112, 0, 0, 0)),
+                        border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           borderSide: BorderSide(
                             color: Colors.blue,
                             width: 2.0,
                           ),
                         ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isConfirmPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isConfirmPasswordVisible =
+                                  !_isConfirmPasswordVisible;
+                            });
+                          },
+                        ),
                       ),
-                      obscureText: true, // To hide password
+                      obscureText:
+                          !_isConfirmPasswordVisible, // Toggle confirm password visibility
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please confirm your password';

@@ -83,7 +83,7 @@ class SignUp extends StatelessWidget {
                   const SizedBox(height: 20),
                   const TextField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: Icon(Icons.countertops),
                       hintText: 'Reagion',
                       hintStyle:
                           TextStyle(color: Color.fromARGB(255, 241, 239, 239)),
@@ -116,7 +116,7 @@ class SignUp extends StatelessWidget {
                   const SizedBox(height: 20),
                   const TextField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: Icon(Icons.lock),
                       hintText: 'Confirm Password',
                       hintStyle:
                           TextStyle(color: Color.fromARGB(255, 241, 239, 239)),
