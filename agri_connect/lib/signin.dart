@@ -1,4 +1,5 @@
 import 'package:agri_connect/forgotpassword.dart';
+import 'package:agri_connect/homepage.dart';
 import 'package:agri_connect/second.dart';
 import 'package:agri_connect/signup.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +120,7 @@ class SignIn extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Second(),
+                          builder: (context) => const Home(),
                         ),
                       );
                     },
