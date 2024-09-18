@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:agri_connect/signin.dart';
+import 'package:agri_connect/screens/signin.dart';
 
 class NewPw extends StatefulWidget {
   const NewPw({Key? key}) : super(key: key);

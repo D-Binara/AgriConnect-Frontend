@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'package:agri_connect/newpassword.dart';
+import 'package:agri_connect/screens/newpassword.dart';
 import 'package:flutter/material.dart';
-import 'package:agri_connect/forgotpassword.dart';
+import 'package:agri_connect/screens/forgotpassword.dart';
 
 class OTP extends StatefulWidget {
   const OTP({Key? key}) : super(key: key);
