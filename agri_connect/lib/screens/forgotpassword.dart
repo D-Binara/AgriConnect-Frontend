@@ -1,6 +1,6 @@
-import 'package:agri_connect/otp.dart';
+import 'package:agri_connect/screens/otp.dart';
 import 'package:flutter/material.dart';
-import 'package:agri_connect/signin.dart';
+import 'package:agri_connect/screens/signin.dart';
 
 class Forgot extends StatelessWidget {
   const Forgot({Key? key}) : super(key: key);
