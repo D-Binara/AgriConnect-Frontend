@@ -38,7 +38,7 @@ class SignUp extends StatelessWidget {
                 children: [
                   const SizedBox(height: 110),
                   const Text(
-                    'Sign up now',
+                    'Sign Up Now',
                     style: TextStyle(
                         fontSize: 25,
                         color: Color.fromARGB(255, 255, 255, 255)),
