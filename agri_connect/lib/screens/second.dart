@@ -1,6 +1,6 @@
-import 'package:agri_connect/firstpage.dart';
-import 'package:agri_connect/signin.dart';
-import 'package:agri_connect/signup.dart';
+import 'package:agri_connect/screens/firstpage.dart';
+import 'package:agri_connect/screens/signin.dart';
+import 'package:agri_connect/screens/signup.dart';
 import 'package:flutter/material.dart';
 
 class Second extends StatelessWidget {

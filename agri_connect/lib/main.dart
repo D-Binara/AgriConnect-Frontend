@@ -1,4 +1,4 @@
-import 'package:agri_connect/firstpage.dart';
+import 'package:agri_connect/screens/firstpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
