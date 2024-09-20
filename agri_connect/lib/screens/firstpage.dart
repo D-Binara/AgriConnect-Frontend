@@ -1,4 +1,4 @@
-import 'package:agri_connect/second.dart';
+import 'package:agri_connect/screens/second.dart';
 import 'package:flutter/material.dart';
 import 'package:agri_connect/main.dart';
 
