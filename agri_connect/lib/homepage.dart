@@ -8,16 +8,11 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Positioned(
-              top: 40,
-              left: 20,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => SignIn()));
-                },
-                child: Image.asset('assets/arrow.png'),
-              ))
+          Container(
+            width: double.infinity,
+            height: 150,
+            color: const Color.fromARGB(255, 113, 247, 118),
+          )
         ],
       ),
     );
