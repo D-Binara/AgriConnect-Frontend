@@ -1,6 +1,6 @@
-import 'package:agri_connect/cart_page.dart';
+import 'package:agri_connect/screens/cart_page.dart';
 import 'package:agri_connect/components/navbar.dart';
-import 'package:agri_connect/profile_page.dart';
+import 'package:agri_connect/screens/profile_page.dart';
 import 'package:agri_connect/screens/predictionpage.dart';
 import 'package:flutter/material.dart';
 
