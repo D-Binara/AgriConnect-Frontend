@@ -43,7 +43,9 @@ class HomePageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: Center(
+          child: const Text('Home'),
+        ),
         backgroundColor: Colors.lightGreen[200],
       ),
       body: SingleChildScrollView(
