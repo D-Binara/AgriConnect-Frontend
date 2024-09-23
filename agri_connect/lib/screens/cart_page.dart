@@ -81,7 +81,10 @@ class CartPage extends StatelessWidget {
         onPressed: () {
           // Handle checkout logic
         },
-        child: Text('Checkout'),
+        child: Text(
+          'Checkout',
+          style: TextStyle(color: Colors.white),
+        ),
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
           backgroundColor: Colors.teal,

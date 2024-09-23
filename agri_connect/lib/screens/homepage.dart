@@ -95,7 +95,10 @@ class HomePageContent extends StatelessWidget {
                       bottom: 20,
                       child: ElevatedButton(
                         onPressed: () {},
-                        child: Text('Buy Now'),
+                        child: Text(
+                          'Buy Now',
+                          style: TextStyle(color: Colors.white),
+                        ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.teal,
                         ),
@@ -125,7 +128,13 @@ class HomePageContent extends StatelessWidget {
               Row(
                 children: [
                   _buildServiceButton('Prediction'),
+                  SizedBox(
+                    width: 10,
+                  ),
                   _buildServiceButton('Seeds'),
+                  SizedBox(
+                    width: 10,
+                  ),
                   _buildServiceButton('Workers'),
                 ],
               ),
