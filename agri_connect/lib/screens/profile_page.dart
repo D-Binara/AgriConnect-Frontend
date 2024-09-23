@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  File? _imageFile;
+
+  Future<void> _pickImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: const Text('profile'),
+        title: const Center(
+          child: Text('Profile'),
         ),
         backgroundColor: Colors.lightGreen[200],
       ),
@@ -16,14 +36,19 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: CircleAvatar(
-                radius: 60,
-                backgroundImage: AssetImage(
-                    'assets/profile_pic.png'), // Add your profile image
+              child: GestureDetector(
+                onTap: _pickImage, // Tap to open the gallery
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundImage: _imageFile != null
+                      ? FileImage(_imageFile!) // Display selected image
+                      : const AssetImage('assets/profile_pic.png')
+                          as ImageProvider, // Default image
+                ),
               ),
             ),
             const SizedBox(height: 20),
-            Center(
+            const Center(
               child: Text(
                 'Heshan Navindu',
                 style: TextStyle(
@@ -60,7 +85,7 @@ class ProfilePage extends StatelessWidget {
         child: ListTile(
           leading: Icon(icon, color: Colors.teal),
           title: Text(label),
-          trailing: Icon(Icons.arrow_forward_ios),
+          trailing: const Icon(Icons.arrow_forward_ios),
         ),
       ),
     );
