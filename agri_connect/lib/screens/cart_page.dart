@@ -5,7 +5,9 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        title: Center(
+          child: const Text('Cart'),
+        ),
         backgroundColor: Colors.lightGreen[200],
       ),
       body: Padding(
@@ -13,20 +15,22 @@ class CartPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Your Cart',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
+            Center(
+              child: Text(
+                'Your Cart',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
               ),
             ),
             const SizedBox(height: 20),
             Expanded(
               child: ListView(
                 children: [
-                  _buildCartItem('Tomatoes', 'assets/tomatoes.png', 4.63, 2),
-                  _buildCartItem('Onion', 'assets/onions.png', 3.02, 3),
+                  _buildCartItem('Tomatoes', 'assets/tomatoes.png', 100.63, 2),
+                  _buildCartItem('Onion', 'assets/onions.png', 150.02, 3),
                 ],
               ),
             ),
@@ -40,20 +44,22 @@ class CartPage extends StatelessWidget {
     );
   }
 
-  Widget _buildCartItem(String name, String imagePath, double price, int quantity) {
+  Widget _buildCartItem(
+      String name, String imagePath, double price, int quantity) {
     return Card(
       margin: const EdgeInsets.only(bottom: 10),
       child: ListTile(
-        leading: Image.asset(imagePath, width: 50, height: 50, fit: BoxFit.cover),
+        leading:
+            Image.asset(imagePath, width: 50, height: 50, fit: BoxFit.cover),
         title: Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text('Quantity: $quantity'),
-        trailing: Text('\$${(price * quantity).toStringAsFixed(2)}'),
+        subtitle: Text('Quantity: $quantity\ kg'),
+        trailing: Text('\RS ${(price * quantity).toStringAsFixed(2)}'),
       ),
     );
   }
 
   Widget _buildTotalPrice() {
-    double totalPrice = (4.63 * 2) + (3.02 * 3);  // Sample calculation
+    double totalPrice = (4.63 * 2) + (3.02 * 3); // Sample calculation
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -62,7 +68,7 @@ class CartPage extends StatelessWidget {
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         Text(
-          '\$${totalPrice.toStringAsFixed(2)}',
+          '\RS${totalPrice.toStringAsFixed(2)}',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ],

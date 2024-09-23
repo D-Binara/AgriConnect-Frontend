@@ -74,7 +74,7 @@ class Second extends StatelessWidget {
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 50), // Adjust padding
+                              vertical: 15, horizontal: 40), // Adjust padding
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 33, 54, 243),
                             borderRadius: BorderRadius.circular(8),
@@ -109,7 +109,7 @@ class Second extends StatelessWidget {
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 50), // Adjust padding
+                              vertical: 15, horizontal: 40), // Adjust padding
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 255, 255, 255),
                             borderRadius: BorderRadius.circular(8),

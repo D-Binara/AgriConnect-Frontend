@@ -5,7 +5,9 @@ class PredictionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Recommandation'),
+        title: Center(
+          child: const Text('Recommandation'),
+        ),
         backgroundColor: Colors.lightGreen[200],
       ),
       body: SingleChildScrollView(
@@ -40,8 +42,8 @@ class PredictionPage extends StatelessWidget {
                 child: const Text('Predict'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 40, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 ),
               ),
             ],
