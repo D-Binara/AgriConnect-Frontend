@@ -39,7 +39,10 @@ class PredictionPage extends StatelessWidget {
                 onPressed: () {
                   // Handle the predict button press
                 },
-                child: const Text('Predict'),
+                child: const Text(
+                  'Predict',
+                  style: TextStyle(color: Colors.white),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
                   padding:
