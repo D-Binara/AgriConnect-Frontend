@@ -1,6 +1,6 @@
-import 'package:agri_connect/cart_page.dart';
+import 'package:agri_connect/screens/cart_page.dart';
 import 'package:agri_connect/components/navbar.dart';
-import 'package:agri_connect/profile_page.dart';
+import 'package:agri_connect/screens/profile_page.dart';
 import 'package:agri_connect/screens/predictionpage.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +43,9 @@ class HomePageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: Center(
+          child: const Text('Home'),
+        ),
         backgroundColor: Colors.lightGreen[200],
       ),
       body: SingleChildScrollView(
