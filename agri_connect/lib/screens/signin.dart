@@ -1,22 +1,71 @@
-import 'package:agri_connect/screens/forgotpassword.dart';
-import 'package:agri_connect/screens/homepage.dart';
-import 'package:agri_connect/screens/second.dart';
-import 'package:agri_connect/screens/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:agri_connect/services/auth_service.dart';
+import 'package:agri_connect/screens/homepage.dart';
+import 'package:agri_connect/screens/signup.dart';
+import 'package:agri_connect/screens/forgotpassword.dart';
+import 'package:agri_connect/screens/second.dart';
+import 'package:agri_connect/widgets/input_field.dart';
+import 'package:agri_connect/widgets/rounded_button.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
+
+  @override
+  _SignInState createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final AuthService _authService = AuthService();
+
+  bool _isLoading = false;
+
+  Future<void> _signIn() async {
+    setState(() {
+      _isLoading = true; 
+    });
+
+    final String userName = _usernameController.text;
+    final String password = _passwordController.text;
+
+    //----------with backed uncomment this-----------
+    // final responseMessage = await _authService.signIn(userName, password);
+
+    setState(() {
+      _isLoading = false; 
+    });
+
+    //----------with backed uncomment this-----------
+    // if (responseMessage == "user logging successfully") {
+     //----------without backed comment this-----------
+     if (1==1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+         //----------withbacked uncomment this-----------
+        // SnackBar(content: Text(responseMessage!)),
+         //----------without backed comment this-----------
+         SnackBar(content: Text("ok")),
+
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          // Add background image
           Positioned.fill(
             child: Image.asset(
               'assets/signin.png',
-              fit: BoxFit.cover, // Make the image cover the entire screen
+              fit: BoxFit.cover,
             ),
           ),
           Positioned(
@@ -43,56 +92,25 @@ class SignIn extends StatelessWidget {
                   const SizedBox(height: 150),
                   const Text(
                     'Sign In Now',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color:
-                          Colors.white, // Set text color to contrast background
-                    ),
+                    style: TextStyle(fontSize: 25, color: Colors.white),
                   ),
                   const SizedBox(height: 10),
                   const Text(
                     'Please sign in to continue using our app',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 200, 200,
-                          200), // Lighter color for better contrast
-                    ),
+                    style: TextStyle(color: Color.fromARGB(255, 200, 200, 200)),
                   ),
                   const SizedBox(height: 20),
-                  const TextField(
-                    decoration: InputDecoration(
-                      prefixIcon:
-                          Icon(Icons.person, color: Colors.white), // Icon color
-                      hintText: 'Username',
-                      hintStyle: TextStyle(
-                        color: Color.fromARGB(
-                            180, 255, 255, 255), // Hint color for visibility
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          width: 2.0,
-                        ),
-                      ),
-                    ),
+                  InputField(
+                    controller: _usernameController,
+                    hintText: 'Username',
+                    icon: Icons.person,
                   ),
                   const SizedBox(height: 20),
-                  const TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      prefixIcon:
-                          Icon(Icons.lock, color: Colors.white), // Icon color
-                      hintText: 'Password',
-                      hintStyle:
-                          TextStyle(color: Color.fromARGB(180, 255, 255, 255)),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(
-                          color: Color.fromARGB(255, 1, 134, 244),
-                          width: 2.0,
-                        ),
-                      ),
-                    ),
+                  InputField(
+                    controller: _passwordController,
+                    hintText: 'Password',
+                    icon: Icons.lock,
+                    isPassword: true,
                   ),
                   const SizedBox(height: 20),
                   Align(
@@ -115,38 +133,10 @@ class SignIn extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 80),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 33, 54, 243),
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black26,
-                            offset: Offset(0, 2),
-                            blurRadius: 6,
-                          ),
-                        ],
-                      ),
-                      child: const Text(
-                        'Sign In',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                  RoundedButton(
+                    text: 'Sign In',
+                    onPressed: _signIn,
+                    isLoading: _isLoading,
                   ),
                   const SizedBox(height: 20),
                   Row(
@@ -154,7 +144,7 @@ class SignIn extends StatelessWidget {
                     children: [
                       const Text(
                         'Don’t have an account?',
-                        style: TextStyle(color: Colors.white), // Text color
+                        style: TextStyle(color: Colors.white),
                       ),
                       const SizedBox(width: 5),
                       GestureDetector(
