@@ -1,18 +1,69 @@
-import 'package:agri_connect/screens/forgotpassword.dart';
-import 'package:agri_connect/screens/homepage.dart';
-import 'package:agri_connect/screens/second.dart';
-import 'package:agri_connect/screens/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:agri_connect/services/auth_service.dart';
+import 'package:agri_connect/screens/homepage.dart';
+import 'package:agri_connect/screens/signup.dart';
+import 'package:agri_connect/screens/forgotpassword.dart';
+import 'package:agri_connect/screens/second.dart';
+import 'package:agri_connect/widgets/input_field.dart';
+import 'package:agri_connect/widgets/rounded_button.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
+
+  @override
+  _SignInState createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final AuthService _authService = AuthService();
+
+  bool _isLoading = false;
+
+  Future<void> _signIn() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    final String userName = _usernameController.text;
+    final String password = _passwordController.text;
+
+    // Uncomment this when connecting to a backend
+    // final responseMessage = await _authService.signIn(userName, password);
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    // Uncomment this when connected to a backend
+    // if (responseMessage == "user logging successfully") {
+
+    // For testing without backend
+    if (1 == 1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          // Uncomment this when connected to a backend
+          // content: Text(responseMessage!),
+          content: Text("Failed to sign in"), // Change message for testing
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          // Add background image (Optional for light theme)
+          // Background image
           Positioned.fill(
             child: Image.asset(
               'assets/signin.png',
@@ -34,7 +85,6 @@ class SignIn extends StatelessWidget {
               child: Image.asset('assets/arrow.png'),
             ),
           ),
-          // Center the column vertically
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
@@ -53,26 +103,18 @@ class SignIn extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    '',
-                    style: TextStyle(
-                      color: Colors.black, // Changed to black
-                    ),
-                  ),
                   const SizedBox(height: 20),
                   const TextField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person,
-                          color: Colors.black87), // Dark icon
+                      prefixIcon: Icon(Icons.person, color: Colors.black87),
                       hintText: 'Username',
                       hintStyle: TextStyle(
-                        color:
-                            Color.fromARGB(180, 100, 100, 100), // Lighter hint
+                        color: Color.fromARGB(180, 100, 100, 100),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
-                          color: Colors.grey, // Grey border for light theme
+                          color: Colors.grey,
                           width: 2.0,
                         ),
                       ),
@@ -82,20 +124,36 @@ class SignIn extends StatelessWidget {
                   const TextField(
                     obscureText: true,
                     decoration: InputDecoration(
-                      prefixIcon:
-                          Icon(Icons.lock, color: Colors.black87), // Dark icon
+                      prefixIcon: Icon(Icons.lock, color: Colors.black87),
                       hintText: 'Password',
                       hintStyle:
                           TextStyle(color: Color.fromARGB(180, 100, 100, 100)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
-                          color: Color.fromARGB(
-                              255, 2, 173, 112), // Green color stays
+                          color: Color.fromARGB(255, 2, 173, 112),
                           width: 2.0,
                         ),
                       ),
                     ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Please sign in to continue using our app',
+                    style: TextStyle(color: Color.fromARGB(255, 200, 200, 200)),
+                  ),
+                  const SizedBox(height: 20),
+                  InputField(
+                    controller: _usernameController,
+                    hintText: 'Username',
+                    icon: Icons.person,
+                  ),
+                  const SizedBox(height: 20),
+                  InputField(
+                    controller: _passwordController,
+                    hintText: 'Password',
+                    icon: Icons.lock,
+                    isPassword: true,
                   ),
                   const SizedBox(height: 20),
                   Align(
@@ -112,8 +170,7 @@ class SignIn extends StatelessWidget {
                       child: const Text(
                         'Forgot Password?',
                         style: TextStyle(
-                          color: Color.fromARGB(
-                              255, 2, 173, 112), // Keep green for consistency
+                          color: Color.fromARGB(255, 2, 173, 112),
                         ),
                       ),
                     ),
@@ -121,19 +178,13 @@ class SignIn extends StatelessWidget {
                   const SizedBox(height: 30),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ),
-                      );
+                      _signIn();
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 80),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(
-                            255, 2, 173, 112), // Main green button
+                        color: const Color.fromARGB(255, 2, 173, 112),
                         borderRadius: BorderRadius.circular(8),
                         boxShadow: const [
                           BoxShadow(
@@ -159,13 +210,9 @@ class SignIn extends StatelessWidget {
                     children: [
                       const Text(
                         'Don’t have an account?',
-                        style: TextStyle(
-                            color: Colors.black), // Dark text for light theme
+                        style: TextStyle(color: Colors.black),
                       ),
-                      const SizedBox(
-                        width: 5,
-                        height: 20,
-                      ),
+                      const SizedBox(width: 5),
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacement(
@@ -178,8 +225,7 @@ class SignIn extends StatelessWidget {
                         child: const Text(
                           'Sign Up',
                           style: TextStyle(
-                            color: Color.fromARGB(
-                                255, 2, 173, 112), // Keep green for consistency
+                            color: Color.fromARGB(255, 2, 173, 112),
                           ),
                         ),
                       ),
