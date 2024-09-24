@@ -1,7 +1,7 @@
 import 'package:agri_connect/screens/cart_page.dart';
 import 'package:agri_connect/components/navbar.dart';
 import 'package:agri_connect/screens/profile_page.dart';
-import 'package:agri_connect/screens/predictionpage.dart';
+import 'package:agri_connect/screens/croprecommandation.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
