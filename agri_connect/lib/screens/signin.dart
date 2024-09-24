@@ -95,7 +95,7 @@ class _SignInState extends State<SignIn> {
                 children: [
                   const SizedBox(height: 10),
                   const Text(
-                    'Sign In Now',
+                    'Sign In',
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
@@ -104,8 +104,9 @@ class _SignInState extends State<SignIn> {
                   ),
                   const SizedBox(height: 10),
                   const SizedBox(height: 20),
-                  const TextField(
-                    decoration: InputDecoration(
+                  TextField(
+                    controller: _usernameController,
+                    decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.person, color: Colors.black87),
                       hintText: 'Username',
                       hintStyle: TextStyle(
@@ -121,13 +122,15 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  const TextField(
+                  TextField(
+                    controller: _passwordController,
                     obscureText: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.lock, color: Colors.black87),
                       hintText: 'Password',
-                      hintStyle:
-                          TextStyle(color: Color.fromARGB(180, 100, 100, 100)),
+                      hintStyle: TextStyle(
+                        color: Color.fromARGB(180, 100, 100, 100),
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -137,37 +140,19 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'Please sign in to continue using our app',
-                    style: TextStyle(color: Color.fromARGB(255, 200, 200, 200)),
-                  ),
                   const SizedBox(height: 20),
-                  InputField(
-                    controller: _usernameController,
-                    hintText: 'Username',
-                    icon: Icons.person,
-                  ),
-                  const SizedBox(height: 20),
-                  InputField(
-                    controller: _passwordController,
-                    hintText: 'Password',
-                    icon: Icons.lock,
-                    isPassword: true,
-                  ),
-                  const SizedBox(height: 20),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Forgot(),
-                          ),
-                        );
-                      },
-                      child: const Text(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Forgot(),
+                        ),
+                      );
+                    },
+                    child: const Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
                         'Forgot Password?',
                         style: TextStyle(
                           color: Color.fromARGB(255, 2, 173, 112),
@@ -177,9 +162,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   const SizedBox(height: 30),
                   GestureDetector(
-                    onTap: () {
-                      _signIn();
-                    },
+                    onTap: _signIn,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           vertical: 15, horizontal: 80),
@@ -204,7 +187,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -212,7 +195,10 @@ class _SignInState extends State<SignIn> {
                         'Don’t have an account?',
                         style: TextStyle(color: Colors.black),
                       ),
-                      const SizedBox(width: 5),
+                      const SizedBox(
+                        width: 5,
+                        height: 100,
+                      ),
                       GestureDetector(
                         onTap: () {
                           Navigator.pushReplacement(

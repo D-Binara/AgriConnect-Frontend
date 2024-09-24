@@ -94,7 +94,7 @@ class _SignUpState extends State<SignUp> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 120),
+                  const SizedBox(height: 140),
                   const Text(
                     'Sign Up',
                     style: TextStyle(
