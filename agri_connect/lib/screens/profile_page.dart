@@ -68,6 +68,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             const SizedBox(height: 30),
+            _buildProfileOption(Icons.man, 'Edit Profile', () {}),
             _buildProfileOption(Icons.history, 'Order History', () {}),
             _buildProfileOption(Icons.settings, 'Settings', () {}),
             _buildProfileOption(Icons.logout, 'Logout', () {}),
