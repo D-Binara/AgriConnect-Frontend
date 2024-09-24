@@ -19,7 +19,7 @@ class RoundedButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 80),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 33, 54, 243),
+          color: const Color.fromARGB(255, 2, 173, 112),
           borderRadius: BorderRadius.circular(8),
           boxShadow: const [
             BoxShadow(
