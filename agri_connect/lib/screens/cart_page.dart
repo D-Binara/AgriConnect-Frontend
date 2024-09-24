@@ -1,6 +1,36 @@
 import 'package:flutter/material.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
+  @override
+  _CartPageState createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  // Cart items list with mutable quantity
+  final List<Map<String, dynamic>> cartItems = [
+    {
+      'name': 'Tomatoes',
+      'imagePath': 'assets/tomatoes.png',
+      'price': 100.63,
+      'quantity': 2
+    },
+    {
+      'name': 'Onion',
+      'imagePath': 'assets/onions.png',
+      'price': 150.02,
+      'quantity': 3
+    },
+  ];
+
+  // Method to calculate total price
+  double _calculateTotalPrice() {
+    double totalPrice = 0;
+    for (var item in cartItems) {
+      totalPrice += item['price'] * item['quantity'];
+    }
+    return totalPrice;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,11 +57,18 @@ class CartPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: ListView(
-                children: [
-                  _buildCartItem('Tomatoes', 'assets/tomatoes.png', 100.63, 2),
-                  _buildCartItem('Onion', 'assets/onions.png', 150.02, 3),
-                ],
+              child: ListView.builder(
+                itemCount: cartItems.length,
+                itemBuilder: (context, index) {
+                  var item = cartItems[index];
+                  return _buildCartItem(
+                    index,
+                    item['name'],
+                    item['imagePath'],
+                    item['price'],
+                    item['quantity'],
+                  );
+                },
               ),
             ),
             Divider(),
@@ -45,21 +82,44 @@ class CartPage extends StatelessWidget {
   }
 
   Widget _buildCartItem(
-      String name, String imagePath, double price, int quantity) {
+      int index, String name, String imagePath, double price, int quantity) {
     return Card(
       margin: const EdgeInsets.only(bottom: 10),
       child: ListTile(
         leading:
             Image.asset(imagePath, width: 50, height: 50, fit: BoxFit.cover),
         title: Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text('Quantity: $quantity\ kg'),
+        subtitle: Row(
+          children: [
+            IconButton(
+              icon: Icon(Icons.remove),
+              onPressed: () {
+                setState(() {
+                  if (cartItems[index]['quantity'] > 1) {
+                    cartItems[index]['quantity']--;
+                  }
+                });
+              },
+            ),
+            Text('${cartItems[index]['quantity']} kg'),
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  cartItems[index]['quantity']++;
+                });
+              },
+            ),
+          ],
+        ),
         trailing: Text('\RS ${(price * quantity).toStringAsFixed(2)}'),
       ),
     );
   }
 
   Widget _buildTotalPrice() {
-    double totalPrice = (4.63 * 2) + (3.02 * 3); // Sample calculation
+    double totalPrice = _calculateTotalPrice();
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -68,7 +128,7 @@ class CartPage extends StatelessWidget {
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         Text(
-          '\RS${totalPrice.toStringAsFixed(2)}',
+          '\RS.${totalPrice.toStringAsFixed(2)}',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ],

@@ -110,13 +110,13 @@ class HomePageContent extends StatelessWidget {
               const SizedBox(height: 20),
               // Featured Products
               const Text(
-                'Featured Product',
+                'Featured Products',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [
-                  _buildProductCard('Tomatoes', 'assets/tomatoes.png', 4.63),
-                  _buildProductCard('Onion', 'assets/onions.png', 3.02),
+                  _buildProductCard('Tomatoes', 'assets/tomatoes.png', 100.63),
+                  _buildProductCard('Onion', 'assets/onions.png', 150.02),
                 ],
               ),
               const SizedBox(height: 20),
@@ -152,7 +152,7 @@ class HomePageContent extends StatelessWidget {
           children: [
             Image.asset(imagePath, height: 80, fit: BoxFit.cover),
             Text(name),
-            Text('\$$price/Kg'),
+            Text('\Rs.$price/Kg'),
             IconButton(
               icon: Icon(Icons.add_circle),
               onPressed: () {},
