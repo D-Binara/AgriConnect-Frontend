@@ -17,36 +17,39 @@ class SignUp extends StatelessWidget {
             ),
           ),
           Positioned(
-              top: 40,
-              left: 20,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Second(),
-                    ),
-                  );
-                },
-                child: Image.asset('assets/arrow.png'),
-              )),
+            top: 40,
+            left: 20,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Second(),
+                  ),
+                );
+              },
+              child: Image.asset('assets/arrow.png'),
+            ),
+          ),
           Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 110),
+                  const SizedBox(height: 120),
                   const Text(
-                    'Sign Up Now',
+                    'Sign Up',
                     style: TextStyle(
-                        fontSize: 25,
-                        color: Color.fromARGB(255, 255, 255, 255)),
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black, // Changed to black
+                    ),
                   ),
                   const SizedBox(height: 10),
                   const Text(
                     'Please fill the details and create an account',
-                    style: TextStyle(color: Color.fromARGB(255, 186, 186, 186)),
+                    style: TextStyle(color: Colors.black), // Changed to black
                   ),
                   const SizedBox(height: 20),
                   const TextField(
@@ -54,7 +57,7 @@ class SignUp extends StatelessWidget {
                       prefixIcon: Icon(Icons.person),
                       hintText: 'Username',
                       hintStyle:
-                          TextStyle(color: Color.fromARGB(255, 241, 239, 239)),
+                          TextStyle(color: Colors.black54), // Darker hint
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -70,7 +73,7 @@ class SignUp extends StatelessWidget {
                       prefixIcon: Icon(Icons.email),
                       hintText: 'E-mail',
                       hintStyle:
-                          TextStyle(color: Color.fromARGB(255, 249, 249, 249)),
+                          TextStyle(color: Colors.black54), // Darker hint
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -84,9 +87,9 @@ class SignUp extends StatelessWidget {
                   const TextField(
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.countertops),
-                      hintText: 'Reagion',
+                      hintText: 'Region',
                       hintStyle:
-                          TextStyle(color: Color.fromARGB(255, 241, 239, 239)),
+                          TextStyle(color: Colors.black54), // Darker hint
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -103,7 +106,7 @@ class SignUp extends StatelessWidget {
                       prefixIcon: Icon(Icons.lock),
                       hintText: 'Password',
                       hintStyle:
-                          TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                          TextStyle(color: Colors.black54), // Darker hint
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -119,7 +122,7 @@ class SignUp extends StatelessWidget {
                       prefixIcon: Icon(Icons.lock),
                       hintText: 'Confirm Password',
                       hintStyle:
-                          TextStyle(color: Color.fromARGB(255, 241, 239, 239)),
+                          TextStyle(color: Colors.black54), // Darker hint
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(
@@ -133,9 +136,9 @@ class SignUp extends StatelessWidget {
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Password must contain atleast 8 characters.',
+                      'Password must contain at least 8 characters.',
                       style:
-                          TextStyle(color: Color.fromARGB(255, 195, 195, 195)),
+                          TextStyle(color: Colors.black54), // Changed to black
                     ),
                   ),
                   const SizedBox(height: 40),
@@ -152,7 +155,7 @@ class SignUp extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(vertical: 15, horizontal: 80),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 33, 54, 243),
+                        color: Color.fromARGB(255, 2, 173, 112),
                         borderRadius: BorderRadius.circular(8),
                         boxShadow: [
                           BoxShadow(
@@ -172,14 +175,16 @@ class SignUp extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Already have an account?',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 243, 243, 243),
-                          )),
+                      const Text(
+                        'Already have an account?',
+                        style: TextStyle(
+                          color: Colors.black, // Changed to black
+                        ),
+                      ),
                       const SizedBox(width: 5),
                       GestureDetector(
                         onTap: () {
@@ -191,9 +196,9 @@ class SignUp extends StatelessWidget {
                           );
                         },
                         child: const Text(
-                          'SignIn',
+                          'Sign In',
                           style: TextStyle(
-                            color: Color.fromARGB(255, 33, 156, 243),
+                            color: Color.fromARGB(255, 2, 173, 112),
                           ),
                         ),
                       ),
