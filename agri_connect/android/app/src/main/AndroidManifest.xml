@@ -17,15 +17,10 @@
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
             <meta-data
-<<<<<<< HEAD
-                android:name="io.flutter.embedding.android.NormalTheme"
-                android:resource="@style/NormalTheme"
-                />
-=======
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
->>>>>>> 9ab94fdf143743e689d90e41eeb0d232a91b3977
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -37,17 +32,12 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
-<<<<<<< HEAD
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-=======
   
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     
->>>>>>> 9ab94fdf143743e689d90e41eeb0d232a91b3977
+
     <queries>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>

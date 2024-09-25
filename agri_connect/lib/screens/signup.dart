@@ -44,8 +44,9 @@ class _SignUpState extends State<SignUp> {
     });
 
     final responseMessage =
-        await _authService.signUp(userName,email,password);
-print((userName,email,password));
+        await _authService.signUp(userName, email, password);
+    print((userName, email, password));
+
     setState(() {
       _isLoading = false;
     });
@@ -80,7 +81,9 @@ print((userName,email,password));
               onTap: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const Second()),
+                  MaterialPageRoute(
+                    builder: (context) => const Second(),
+                  ),
                 );
               },
               child: Image.asset('assets/arrow.png'),
@@ -92,16 +95,21 @@ print((userName,email,password));
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 110),
+                  const SizedBox(height: 140),
                   const Text(
-                    'Sign Up Now',
+                    'Sign Up',
                     style: TextStyle(
-                        fontSize: 25, color: Colors.white),
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black, // Changed to black
+                    ),
                   ),
                   const SizedBox(height: 10),
                   const Text(
                     'Please fill in the details to create an account',
-                    style: TextStyle(color: Color(0xFFBABABA)),
+                    style: TextStyle(
+                      color: Colors.black, // Changed to black
+                    ),
                   ),
                   const SizedBox(height: 20),
                   InputField(
@@ -110,9 +118,9 @@ print((userName,email,password));
                     icon: Icons.person,
                   ),
                   const SizedBox(height: 20),
-                   InputField(
+                  InputField(
                     controller: _emailController,
-                    hintText: 'Email',
+                    hintText: 'E-mail',
                     icon: Icons.email,
                   ),
                   const SizedBox(height: 20),
@@ -122,14 +130,14 @@ print((userName,email,password));
                     icon: Icons.countertops,
                   ),
                   const SizedBox(height: 20),
-                 InputField(
+                  InputField(
                     controller: _passwordController,
                     hintText: 'Password',
                     icon: Icons.lock,
                     isPassword: true,
                   ),
                   const SizedBox(height: 20),
-                 InputField(
+                  InputField(
                     controller: _confirmPasswordController,
                     hintText: 'Confirm Password',
                     icon: Icons.lock,
@@ -140,22 +148,26 @@ print((userName,email,password));
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Password must contain at least 8 characters.',
-                      style: TextStyle(color: Color(0xFFC3C3C3)),
+
+                      style:
+                          TextStyle(color: Colors.black54), // Changed to black
                     ),
                   ),
                   const SizedBox(height: 40),
-                 RoundedButton(
+                  RoundedButton(
                     text: 'Sign Up',
                     onPressed: _register,
                     isLoading: _isLoading,
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
                         'Already have an account?',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.black, // Changed to black
+                        ),
                       ),
                       const SizedBox(width: 5),
                       GestureDetector(
@@ -168,7 +180,9 @@ print((userName,email,password));
                         },
                         child: const Text(
                           'Sign In',
-                          style: TextStyle(color: Color(0xFF219CF3)),
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 2, 173, 112),
+                          ),
                         ),
                       ),
                     ],
