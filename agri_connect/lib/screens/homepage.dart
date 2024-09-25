@@ -20,8 +20,9 @@ class _HomePageState extends State<HomePage> {
   // List of pages corresponding to the tabs
   final List<Widget> _pages = [
     HomePageContent(), // You need to split HomePage content into a separate widget
+    Croprecommandation(),
     PredictionPage(),
-
+    MarketplacePage(),
     ProfilePage(),
   ];
 
