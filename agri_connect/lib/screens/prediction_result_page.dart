@@ -1,8 +1,10 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class PredictionResultPage extends StatelessWidget {
   final String disease;
-  final int confidence;
+  final double confidence;
   final String solution;
 
   PredictionResultPage({
@@ -15,8 +17,8 @@ class PredictionResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: const Text('Prediction Result'),
+        title: const Center(
+          child: Text('Prediction Result'),
         ),
         backgroundColor: Colors.lightGreen[200],
       ),
@@ -34,15 +36,15 @@ class PredictionResultPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Text(
-                'Confidence: $confidence%',
+                'Confidence: $confidence %',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18),
               ),
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 'Suggested Solution:',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'NotoSansSinhala'),
               ),
               const SizedBox(height: 10),
               Text(
@@ -55,14 +57,14 @@ class PredictionResultPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context); // Navigate back to home page
                 },
-                child: const Text(
-                  'Go to Home',
-                  style: TextStyle(color: Colors.white),
-                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                ),
+                child: const Text(
+                  'Go to Home',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ],
