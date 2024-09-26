@@ -89,7 +89,7 @@ class _SignUpState extends State<SignUp> {
               child: Image.asset('assets/arrow.png'),
             ),
           ),
-          Center(
+          SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Column(
