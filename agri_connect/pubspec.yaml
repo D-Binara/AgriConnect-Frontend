@@ -69,6 +69,11 @@ flutter:
     - assets/onions.png
     - assets/adventure_background.png
     - assets/agriconnect_logo.png
+    - assets/Frame 2424.png
+    - assets/Frame 2425.png
+    - assets/Frame 2427.png
+    - assets/pera.jpg
+    - assets/carrot.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

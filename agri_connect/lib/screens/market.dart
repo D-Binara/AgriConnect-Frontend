@@ -79,18 +79,88 @@ class _MarketplacePageState extends State<MarketplacePage> {
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.65, // Adjusted to minimize card size
+                  childAspectRatio: 0.7, // Adjusted to fit new image ratio
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
                 itemCount: filteredProducts.length,
                 itemBuilder: (context, index) {
-                  return ProductCard(product: filteredProducts[index]);
+                  return _buildProductCard(filteredProducts[index]);
                 },
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildProductCard(Product product) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      elevation: 5,
+      shadowColor: Colors.grey.withOpacity(0.5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Product Image
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+            child: Image.asset(
+              product.imagePath,
+              height: 120,
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          // Product Name
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              product.name,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ),
+
+          // Product Price
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              '\$${product.price.toStringAsFixed(2)}/Kg',
+              style: TextStyle(
+                color: Colors.green[700],
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+          // Add to Cart Button
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton.icon(
+              onPressed: () {
+                // Add to cart functionality here
+                print('${product.name} added to cart');
+              },
+              icon: Icon(Icons.add_shopping_cart, color: Colors.white),
+              label: Text(
+                'Add to Cart',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -101,66 +171,9 @@ class Product {
   final String imagePath;
   final double price;
 
-  Product({required this.name, required this.imagePath, required this.price});
-}
-
-class ProductCard extends StatelessWidget {
-  final Product product;
-
-  const ProductCard({Key? key, required this.product}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      elevation: 4,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
-            child: Image.asset(
-              product.imagePath,
-              height: 100, // Reduced height to minimize card size
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              product.name,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14), // Adjusted font size
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text('\$${product.price.toStringAsFixed(2)}/Kg'),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Add to cart functionality can be implemented here
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('${product.name} added to cart!'),
-                  ),
-                );
-              },
-              child: Text('Add to Cart'),
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.lightGreen,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  Product({
+    required this.name,
+    required this.imagePath,
+    required this.price,
+  });
 }
