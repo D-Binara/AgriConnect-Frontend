@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class CropRecommendationService {
-  static final String baseUrl = dotenv.env['BASE_URL']?? "http://default-url.com";
+  static const String baseUrl = "http://13.53.54.49:8000";
 
   static Future<Map<String, dynamic>?> getRecommendation({
     required double nitrogen,
