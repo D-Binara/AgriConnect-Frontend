@@ -54,7 +54,7 @@ class _PredictionPageState extends State<PredictionPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Error"),
+          title: const Text("Error"),
           content: const Text("Failed to predict disease. Please try again."),
           actions: [
             TextButton(
@@ -72,7 +72,7 @@ class _PredictionPageState extends State<PredictionPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("No Image"),
+          title: const Text("No Image"),
           content: const Text("Please upload an image first."),
           actions: [
             TextButton(
@@ -89,8 +89,8 @@ class _PredictionPageState extends State<PredictionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: const Text('Recommendation'),
+        title: const Center(
+          child: Text('Recommendation'),
         ),
         backgroundColor: Colors.lightGreen[200],
       ),
@@ -126,24 +126,24 @@ class _PredictionPageState extends State<PredictionPage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _pickImage,
-                child: const Text('Pick Image'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 ),
+                child: const Text('Pick Image'),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _submitPrediction,
-                child: const Text(
-                  'Predict',
-                  style: TextStyle(color: Colors.white),
-                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                ),
+                child: const Text(
+                  'Predict',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ],
