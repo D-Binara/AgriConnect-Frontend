@@ -1,3 +1,4 @@
+import 'package:agri_connect/screens/homepage.dart';
 import 'package:flutter/material.dart';
 
 class CropResultPage extends StatelessWidget {
@@ -19,13 +20,15 @@ class CropResultPage extends StatelessWidget {
         backgroundColor: Colors.lightGreen[400],
         elevation: 0,
       ),
-      body: Center( // Centering all content
+      body: Center(
+        // Centering all content
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min, // Only takes up the necessary space
             mainAxisAlignment: MainAxisAlignment.center, // Centers vertically
-            crossAxisAlignment: CrossAxisAlignment.center, // Centers horizontally
+            crossAxisAlignment:
+                CrossAxisAlignment.center, // Centers horizontally
             children: [
               const Text(
                 'Recommended Crop:',
@@ -47,7 +50,12 @@ class CropResultPage extends StatelessWidget {
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context); // Navigate back to the home page
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
                 },
                 child: const Text(
                   'Go to Home',
@@ -58,7 +66,8 @@ class CropResultPage extends StatelessWidget {
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 18),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 18),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),

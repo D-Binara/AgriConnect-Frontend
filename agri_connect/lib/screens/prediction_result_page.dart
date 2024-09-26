@@ -1,3 +1,4 @@
+import 'package:agri_connect/screens/homepage.dart';
 import 'package:flutter/material.dart';
 
 class PredictionResultPage extends StatelessWidget {
@@ -19,7 +20,8 @@ class PredictionResultPage extends StatelessWidget {
     // Format text using different fonts for Sinhala, Tamil, and default (English)
     List<TextSpan> _formatText(String text) {
       List<TextSpan> spans = [];
-      final RegExp regExp = RegExp(r"(\*\*.*?\*\*|\*.*?\*|DISEASE:.*Sinhala.*|DISEASE:.*Tamil.*)");
+      final RegExp regExp = RegExp(
+          r"(\*\*.*?\*\*|\*.*?\*|DISEASE:.*Sinhala.*|DISEASE:.*Tamil.*)");
 
       int start = 0;
       for (var match in regExp.allMatches(text)) {
@@ -92,7 +94,8 @@ class PredictionResultPage extends StatelessWidget {
               Text(
                 'Disease Identified: $disease',
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               Text(
@@ -120,11 +123,17 @@ class PredictionResultPage extends StatelessWidget {
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context); // Navigate back to home page
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,
-                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 ),
                 child: const Text(
                   'Go to Home',

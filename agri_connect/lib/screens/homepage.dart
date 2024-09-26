@@ -68,9 +68,8 @@ class _HomePageContentState extends State<HomePageContent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: const Text('Home'),
-        ),
+        title: const Text('Home'),
+        centerTitle: true,
         backgroundColor: Colors.lightGreen[200],
       ),
       body: SingleChildScrollView(
