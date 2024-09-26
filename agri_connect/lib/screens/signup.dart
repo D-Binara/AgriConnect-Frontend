@@ -147,7 +147,7 @@ class _SignUpState extends State<SignUp> {
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Password must contain at least 8 characters.',
+                      '',
 
                       style:
                           TextStyle(color: Colors.black54), // Changed to black
