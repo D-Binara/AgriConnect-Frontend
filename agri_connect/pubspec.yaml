@@ -90,6 +90,8 @@ flutter:
     - family: NotoSansSinhala
       fonts:
         - asset: assets/fonts/NotoSansSinhala-VariableFont_wdth,wght.ttf
+        - asset: assets/fonts/NotoSansSinhala-Regular.ttf
+        - asset: assets/fonts/NotoSansSinhala-Bold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

@@ -59,7 +59,8 @@ class _MarketplacePageState extends State<MarketplacePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: const Text('Marketplace')),
+        title: const Text('Marketplace'),
+        centerTitle: true,
         backgroundColor: Colors.lightGreen[200],
       ),
       body: Padding(

@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'package:agri_connect/screens/homepage.dart';
 import 'package:flutter/material.dart';
 
 class PredictionResultPage extends StatelessWidget {
@@ -15,6 +14,69 @@ class PredictionResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Clean up the solution string by removing unwanted characters
+    String cleanedSolution = solution.replaceAll('\\n', '\n');
+
+    // Format text using different fonts for Sinhala, Tamil, and default (English)
+    List<TextSpan> _formatText(String text) {
+      List<TextSpan> spans = [];
+      final RegExp regExp = RegExp(
+          r"(\*\*.*?\*\*|\*.*?\*|DISEASE:.*Sinhala.*|DISEASE:.*Tamil.*)");
+
+      int start = 0;
+      for (var match in regExp.allMatches(text)) {
+        if (match.start > start) {
+          // Add normal text
+          spans.add(TextSpan(text: text.substring(start, match.start)));
+        }
+
+        String matchText = match.group(0)!;
+
+        if (matchText.startsWith('**')) {
+          // Add bold text
+          spans.add(
+            TextSpan(
+              text: matchText.substring(2, matchText.length - 2),
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          );
+        } else if (matchText.startsWith('*')) {
+          // Add italic text
+          spans.add(
+            TextSpan(
+              text: matchText.substring(1, matchText.length - 1),
+              style: const TextStyle(fontStyle: FontStyle.italic),
+            ),
+          );
+        } else if (matchText.contains('Sinhala')) {
+          // Add Sinhala text with proper font
+          spans.add(
+            TextSpan(
+              text: matchText,
+              style: const TextStyle(fontFamily: 'NotoSansSinhala'),
+            ),
+          );
+        } else if (matchText.contains('Tamil')) {
+          // Add Tamil text with proper font
+          spans.add(
+            TextSpan(
+              text: matchText,
+              style: const TextStyle(fontFamily: 'NotoSansTamil'),
+            ),
+          );
+        }
+
+        start = match.end;
+      }
+
+      if (start < text.length) {
+        // Add remaining normal text
+        spans.add(TextSpan(text: text.substring(start)));
+      }
+
+      return spans;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -32,30 +94,41 @@ class PredictionResultPage extends StatelessWidget {
               Text(
                 'Disease Identified: $disease',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               Text(
                 'Confidence: $confidence %',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
+                style: const TextStyle(fontSize: 18),
               ),
               const SizedBox(height: 20),
               const Text(
                 'Suggested Solution:',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'NotoSansSinhala'),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'NotoSansSinhala',
+                ),
               ),
               const SizedBox(height: 10),
-              Text(
-                solution,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16),
+              RichText(
+                text: TextSpan(
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
+                  children: _formatText(cleanedSolution), // Apply fonts
+                ),
               ),
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context); // Navigate back to home page
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomePage(),
+                    ),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.teal,

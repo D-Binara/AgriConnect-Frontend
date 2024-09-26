@@ -81,9 +81,8 @@ class _CroprecommandationState extends State<Croprecommandation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: const Text('Recommandation'),
-        ),
+        title: const Text('Recommandation'),
+        centerTitle: true,
         backgroundColor: Colors.lightGreen[200],
       ),
       body: SingleChildScrollView(

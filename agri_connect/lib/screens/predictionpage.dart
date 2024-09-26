@@ -103,9 +103,8 @@ class _PredictionPageState extends State<PredictionPage> {
       children: [
         Scaffold(
           appBar: AppBar(
-            title: const Center(
-              child: Text('Disease Identification'),
-            ),
+            title: Text('Disease Identification'),
+            centerTitle: true,
             backgroundColor: Colors.lightGreen[200],
           ),
           body: SingleChildScrollView(
