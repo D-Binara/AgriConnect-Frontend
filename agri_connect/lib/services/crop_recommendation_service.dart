@@ -1,8 +1,9 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class CropRecommendationService {
-  static const String baseUrl = "http://192.168.8.186:8000"; // Replace with your backend URL
+  static const String baseUrl = "http://13.53.54.49:8000";
 
   static Future<Map<String, dynamic>?> getRecommendation({
     required double nitrogen,

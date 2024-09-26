@@ -16,7 +16,13 @@ class _CroprecommandationState extends State<Croprecommandation> {
   final TextEditingController _phController = TextEditingController();
   final TextEditingController _rainfallController = TextEditingController();
 
+  bool _isLoading = false;
+
   Future<void> _submitRecommendation() async {
+    setState(() {
+      _isLoading = true;
+    });
+
     final nitrogen = double.tryParse(_nitrogenController.text) ?? 0;
     final phosphorus = double.tryParse(_phosphorusController.text) ?? 0;
     final potassium = double.tryParse(_potassiumController.text) ?? 0;
@@ -34,6 +40,10 @@ class _CroprecommandationState extends State<Croprecommandation> {
       ph: ph,
       rainfall: rainfall,
     );
+
+    setState(() {
+      _isLoading = false;
+    });
 
     if (response != null && response.containsKey('recommended crop')) {
       Navigator.push(

@@ -1,7 +1,9 @@
 import 'package:agri_connect/screens/firstpage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() {
+  // await dotenv.load();
   runApp(const MainApp());
 }
 
