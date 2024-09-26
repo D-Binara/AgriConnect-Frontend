@@ -104,7 +104,7 @@ class _PredictionPageState extends State<PredictionPage> {
         Scaffold(
           appBar: AppBar(
             title: const Center(
-              child: Text('Recommendation'),
+              child: Text('Disease Identification'),
             ),
             backgroundColor: Colors.lightGreen[200],
           ),
@@ -116,7 +116,7 @@ class _PredictionPageState extends State<PredictionPage> {
                 children: [
                   const SizedBox(height: 20),
                   const Text(
-                    'Welcome To Our Crop Recommendation Feature',
+                    'Welcome To Our Disease Identification Feature',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
@@ -145,7 +145,10 @@ class _PredictionPageState extends State<PredictionPage> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 40, vertical: 15),
                     ),
-                    child: const Text('Pick Image'),
+                    child: const Text(
+                      'Pick Image',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(

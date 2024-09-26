@@ -18,13 +18,13 @@ class _MarketplacePageState extends State<MarketplacePage> {
       price: 3.02,
     ),
     Product(
-      name: 'Potatoes',
-      imagePath: 'assets/potatoes.png',
+      name: 'Guava',
+      imagePath: 'assets/pera.jpg',
       price: 2.50,
     ),
     Product(
       name: 'Carrots',
-      imagePath: 'assets/carrots.png',
+      imagePath: 'assets/carrot.webp',
       price: 1.80,
     ),
   ];
