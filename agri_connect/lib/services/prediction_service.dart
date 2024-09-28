@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
 class PredictionService {
-  static const String apiUrl = 'http://13.53.54.49:8000/prediction';
+  static const String apiUrl = 'http://192.168.8.104:8000/prediction';
 
   static Future<Map<String, dynamic>?> predictDisease(XFile image) async {
     try {
