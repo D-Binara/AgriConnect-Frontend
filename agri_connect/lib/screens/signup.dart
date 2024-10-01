@@ -66,6 +66,8 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset:
+          false, // Prevents resizing on keyboard appearance
       body: Stack(
         children: [
           Positioned.fill(
@@ -89,106 +91,110 @@ class _SignUpState extends State<SignUp> {
               child: Image.asset('assets/arrow.png'),
             ),
           ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(height: 140),
-                  const Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black, // Changed to black
+          SafeArea(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    'Please fill in the details to create an account',
-                    style: TextStyle(
-                      color: Colors.black, // Changed to black
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  InputField(
-                    controller: _usernameController,
-                    hintText: 'Username',
-                    icon: Icons.person,
-                  ),
-                  const SizedBox(height: 20),
-                  InputField(
-                    controller: _emailController,
-                    hintText: 'E-mail',
-                    icon: Icons.email,
-                  ),
-                  const SizedBox(height: 20),
-                  InputField(
-                    controller: _regionController,
-                    hintText: 'Region',
-                    icon: Icons.countertops,
-                  ),
-                  const SizedBox(height: 20),
-                  InputField(
-                    controller: _passwordController,
-                    hintText: 'Password',
-                    icon: Icons.lock,
-                    isPassword: true,
-                  ),
-                  const SizedBox(height: 20),
-                  InputField(
-                    controller: _confirmPasswordController,
-                    hintText: 'Confirm Password',
-                    icon: Icons.lock,
-                    isPassword: true,
-                  ),
-                  const SizedBox(height: 20),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Password must contain at least 8 characters.',
-
-                      style:
-                          TextStyle(color: Colors.black54), // Changed to black
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  RoundedButton(
-                    text: 'Sign Up',
-                    onPressed: _register,
-                    isLoading: _isLoading,
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Already have an account?',
-                        style: TextStyle(
-                          color: Colors.black, // Changed to black
+                    child: IntrinsicHeight(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const SizedBox(height: 140),
+                            const Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            const Text(
+                              'Please fill in the details to create an account',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            InputField(
+                              controller: _usernameController,
+                              hintText: 'Username',
+                              icon: Icons.person,
+                            ),
+                            const SizedBox(height: 20),
+                            InputField(
+                              controller: _emailController,
+                              hintText: 'E-mail',
+                              icon: Icons.email,
+                            ),
+                            const SizedBox(height: 20),
+                            InputField(
+                              controller: _regionController,
+                              hintText: 'Region',
+                              icon: Icons.countertops,
+                            ),
+                            const SizedBox(height: 20),
+                            InputField(
+                              controller: _passwordController,
+                              hintText: 'Password',
+                              icon: Icons.lock,
+                              isPassword: true,
+                            ),
+                            const SizedBox(height: 20),
+                            InputField(
+                              controller: _confirmPasswordController,
+                              hintText: 'Confirm Password',
+                              icon: Icons.lock,
+                              isPassword: true,
+                            ),
+                            const SizedBox(height: 28),
+                            RoundedButton(
+                              text: 'Sign Up',
+                              onPressed: _register,
+                              isLoading: _isLoading,
+                            ),
+                            const SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Already have an account?',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                const SizedBox(width: 5),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const SignIn()),
+                                    );
+                                  },
+                                  child: const Text(
+                                    'Sign In',
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 2, 173, 112),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Spacer(), // Pushes content above and prevents blank space
+                          ],
                         ),
                       ),
-                      const SizedBox(width: 5),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignIn()),
-                          );
-                        },
-                        child: const Text(
-                          'Sign In',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 2, 173, 112),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
         ],

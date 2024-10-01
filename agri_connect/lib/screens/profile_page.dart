@@ -1,3 +1,4 @@
+import 'package:agri_connect/screens/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -25,12 +26,12 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text('Profile'),
-        ),
+        title: const Text('Profile'),
+        centerTitle: true,
         backgroundColor: Colors.lightGreen[200],
       ),
-      body: SingleChildScrollView( // Added SingleChildScrollView for scrolling
+      body: SingleChildScrollView(
+        // Added SingleChildScrollView for scrolling
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -72,7 +73,14 @@ class _ProfilePageState extends State<ProfilePage> {
               _buildProfileOption(Icons.man, 'Edit Profile', () {}),
               _buildProfileOption(Icons.history, 'Order History', () {}),
               _buildProfileOption(Icons.settings, 'Settings', () {}),
-              _buildProfileOption(Icons.logout, 'Logout', () {}),
+              _buildProfileOption(Icons.logout, 'Logout', () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          SignIn()), // Replace with your sign-in page class
+                );
+              }),
             ],
           ),
         ),
