@@ -1,6 +1,82 @@
+import 'package:agri_connect/services/crop_recommendation_service.dart';
 import 'package:flutter/material.dart';
+import 'crop_result_page.dart';
 
-class PredictionPage extends StatelessWidget {
+class Croprecommandation extends StatefulWidget {
+  @override
+  _CroprecommandationState createState() => _CroprecommandationState();
+}
+
+class _CroprecommandationState extends State<Croprecommandation> {
+  final TextEditingController _nitrogenController = TextEditingController();
+  final TextEditingController _phosphorusController = TextEditingController();
+  final TextEditingController _potassiumController = TextEditingController();
+  final TextEditingController _temperatureController = TextEditingController();
+  final TextEditingController _humidityController = TextEditingController();
+  final TextEditingController _phController = TextEditingController();
+  final TextEditingController _rainfallController = TextEditingController();
+
+  bool _isLoading = false;
+
+  Future<void> _submitRecommendation() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    final nitrogen = double.tryParse(_nitrogenController.text) ?? 0;
+    final phosphorus = double.tryParse(_phosphorusController.text) ?? 0;
+    final potassium = double.tryParse(_potassiumController.text) ?? 0;
+    final temperature = double.tryParse(_temperatureController.text) ?? 0;
+    final humidity = double.tryParse(_humidityController.text) ?? 0;
+    final ph = double.tryParse(_phController.text) ?? 0;
+    final rainfall = double.tryParse(_rainfallController.text) ?? 0;
+
+    final response = await CropRecommendationService.getRecommendation(
+      nitrogen: nitrogen,
+      phosphorus: phosphorus,
+      potassium: potassium,
+      temperature: temperature,
+      humidity: humidity,
+      ph: ph,
+      rainfall: rainfall,
+    );
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (response != null && response.containsKey('recommended crop')) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CropResultPage(
+            crop: response['recommended crop'],
+          ),
+        ),
+      );
+    } else {
+      _showErrorDialog();
+    }
+  }
+
+  void _showErrorDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Error"),
+          content: Text("Failed to get crop recommendation. Please try again."),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,21 +100,21 @@ class PredictionPage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               const Text(
-                'Get personalized crop recommendations based on your location, soil, and climate. Farm smarter with data-driven choices for a bountiful harvest',
+                'Get personalized crop recommendations based on your location, soil, and climate.',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 14),
               ),
               const SizedBox(height: 30),
-              _buildInputField('Nitrogen'),
-              _buildInputField('Phosphorus'),
-              _buildInputField('Potassium'),
-              _buildInputField('Average Temperature'),
-              _buildInputField('Average Humidity'),
+              _buildInputField('Nitrogen', _nitrogenController),
+              _buildInputField('Phosphorus', _phosphorusController),
+              _buildInputField('Potassium', _potassiumController),
+              _buildInputField('Average Temperature', _temperatureController),
+              _buildInputField('Average Humidity', _humidityController),
+              _buildInputField('PH Level', _phController),
+              _buildInputField('Rainfall', _rainfallController),
               const SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {
-                  // Handle the predict button press
-                },
+                onPressed: _submitRecommendation,
                 child: const Text(
                   'Predict',
                   style: TextStyle(color: Colors.white),
@@ -56,7 +132,7 @@ class PredictionPage extends StatelessWidget {
     );
   }
 
-  Widget _buildInputField(String label) {
+  Widget _buildInputField(String label, TextEditingController controller) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -71,6 +147,7 @@ class PredictionPage extends StatelessWidget {
           Expanded(
             flex: 3,
             child: TextField(
+              controller: controller,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),

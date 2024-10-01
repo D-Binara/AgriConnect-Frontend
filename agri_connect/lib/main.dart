@@ -1,7 +1,9 @@
 import 'package:agri_connect/screens/firstpage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() {
+  // await dotenv.load();
   runApp(const MainApp());
 }
 
@@ -26,9 +28,12 @@ class MyHomePage extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Container(
-            color: Colors.green, 
+          // Background image
+          Image.asset(
+            'assets/agriconnect_logo.png', // Make sure the image is in assets
+            fit: BoxFit.cover, // Image covers the entire screen
           ),
+          // GestureDetector to navigate to First page when text is tapped
           GestureDetector(
             onTap: () {
               Navigator.pushReplacement(
@@ -39,17 +44,7 @@ class MyHomePage extends StatelessWidget {
               );
               print("AgriConnect text tapped!");
             },
-            child: Center(
-              child: Text(
-                'AgriConnect',
-                style: TextStyle(
-                  fontSize: 44,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
+          )
         ],
       ),
     );
